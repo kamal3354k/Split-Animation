@@ -1,0 +1,136 @@
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Character</title>
+    </head>
+    
+    <body>
+        <style>
+            
+  .char{
+    /* width:100px;
+    height:100px; */
+    position:absolute;
+    top:50%;
+    left: 50%;
+    /* background:blue; */
+    overflow:hidden;
+    transform: translate(-50%, -50%);
+    width:calc(576px/9);
+    height: 60px;
+  
+  }
+  
+  .move{
+      animation:move_char 1s steps(9) infinite;
+  }
+  .img{
+      position: relative;
+    top: -200px;
+    image-rendering: pixelated;
+  }
+
+  @keyframes move_char{
+    0%{
+      transform:translate3d(0px,0,0)
+    }
+    to{
+      transform:translate3d(-100%,0,0)
+    }
+  }
+
+  .control {
+
+    display: flex;
+    height: 100vh;
+  
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
+
+}
+
+button{
+  width:100px;
+  height:50px;
+}
+
+i.fa {
+    font-size: 40px;
+}
+        </style>
+        <h1 style="text-align:center;">Use Arrow Key to change the direction of Character.</h1>
+    
+        <div class="char">
+            <!-- <img class="img" src="char2.png"> -->
+            <img class="img move" id="img"src="https://i.pinimg.com/originals/59/6f/9f/596f9f989c0da07e7348af5d327e0cea.png">
+        </div>
+       <div class="control">
+        <button id="up" onclick="up()"><i class="fa fa-arrow-circle-up"></i></button>
+        <button id="left" onclick="left()"><i class="fa fa-arrow-circle-left"></i></button>
+        <button id="stop" onclick="stop()"><i class="fa fa-ban"></i></button>
+        <button id="right" onclick="right()"><i class="fa fa-arrow-circle-right"></i></button>
+        <button id="down" onclick="down()"><i class="fa fa-arrow-circle-down"></i></button>
+       </div>
+    
+        <!-- <script src="index.js"></script> -->
+        <script>
+            document.onkeydown = checkKey;
+            var img = document.getElementById("img");
+
+function checkKey(e) {
+
+    // e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+
+        document.querySelector(".img").style.top="-7px";
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        document.querySelector(".img").style.top="-136px";
+    }
+    else if (e.keyCode == '37') {
+        // left arrow
+        document.querySelector(".img").style.top="-72px";
+    }
+    else if (e.keyCode == '39') {
+        // right arrow
+        document.querySelector(".img").style.top="-200px";
+    }
+
+}
+
+var left=()=>{
+    img.classList.add("move");
+    document.querySelector(".img").style.top="-72px";
+}
+
+var right=()=>{
+    img.classList.add("move");
+    document.querySelector(".img").style.top="-200px";
+}
+
+var up=()=>{
+    img.classList.add("move");
+    document.querySelector(".img").style.top="-7px";
+}
+
+var down=()=>{
+    img.classList.add("move");
+    document.querySelector(".img").style.top="-136px";
+}
+var stop=()=>{
+    img.classList.remove("move");
+}
+        </script>
+    </body>
+    
+    </html>
